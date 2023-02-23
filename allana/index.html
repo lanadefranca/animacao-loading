@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <title>Cato</title>
+
+    <style>
+        @import url('animate.css'); /* Tentando importar biblioteca de animação */
+        @import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+
+        /*
+            :root = variável css
+            cor-fundo é o nome da variável, atribuida a cor #F2F2F2
+            muito usado quando algo se repete ao longo do css
+        */
+
+        :root {
+            --cor-fundo: #F1F1F1;
+        }
+
+        /*
+            classe utilizada para centralizar elementos
+        */
+
+        .centro {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            align-content: center;
+            justify-items: center;
+            justify-content: center;
+        }
+
+        /*
+            configuração geral do body
+            tem uma animação que faz com que todos os elementos da página
+            flutuem infinitamente
+        */
+
+        body {
+            background: var(--cor-fundo);
+            color: #FF892E;
+            font-family: 'Titan One', cursive;
+            animation: floating 5s infinite;
+        }
+
+        @keyframes floating {
+            0% {
+                transform: translatey(0px);
+            }
+            50% {
+                transform: translatey(-25px); /* mover os elementos no eixo Y em - 25 px e dps voltar para 0 px */
+            }
+            100% {
+                transform: translatey(0px);
+            }
+        }
+
+        /*
+            titulo lana's petcare !
+            com animação denominada titulo
+            para começar invisivel e ao mesmo tempo em que o gif de gato passar
+            o texto voltar a ser visível
+        */
+
+        h1 {
+            position: absolute;
+            font-size: 8rem;
+            top: 85px;
+            opacity: 0;
+            animation: fade 1s 3s forwards;
+        }
+
+        /*
+            subtitulo tbem flutua
+            tbem e invisivel no começo
+            ao lado ficam os pontinhos do loading
+        */
+
+        h2 {
+            position: absolute;
+            opacity: 0;
+            font-size: 3rem;
+            top: 325px;
+            animation: fade 1s 3s forwards;
+        }
+
+        /*
+            tres pontinhos de loading
+        */
+
+        .loading {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            animation: fade 1s 3s forwards;
+        }
+
+        /*
+           configurações pontos de loading
+        */
+
+        .loading-dot {
+            position: relative;
+            top: 400px;
+            left: 325px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin: 0 5px;
+            background-color: #FF892E;
+            opacity: 0;
+            animation: loading 1s infinite;
+        }
+
+        /*
+            tres atributos a seguir configuram
+            o delay entre a animação
+            de loading, fazendo os pontos
+            terem delay
+        */
+
+        .loading-dot:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .loading-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loading-dot:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        /*
+            animar o gatinho andando
+        */
+
+        .cato {
+            position: absolute;
+            animation: andar_gato 12s forwards;
+            background: var(--cor-fundo);
+            left: 100%;
+        }
+
+        @keyframes fade {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes andar_gato {
+            0% {
+                left: 100%;
+                top: 0;
+            }
+
+            100% {
+                left: -100%;
+                top: 0;
+            }
+        }
+        
+        @keyframes loading {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="conteudo centro">
+        <!-- titulo e subtitulo -->
+        <h1>Lana's PetCare!</h1>
+        <h2>Aguarde! Carregando</h2>
+        <!-- container + pontinhos do carregamento -->
+        <div class="loading">
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+        </div>
+        <!-- gif do gatinho -->
+        <img src="cato" class="cato">
+    </div>
+</body> 
+</html>
